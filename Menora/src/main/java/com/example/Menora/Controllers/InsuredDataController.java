@@ -1,5 +1,6 @@
 package com.example.Menora.Controllers;
 
+import com.example.Menora.Controllers.DTO.InsuredDataDetailsDTO;
 import com.example.Menora.Repositories.XMLRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class InsuredDataController {
     }
 
     @GetMapping("/{insuredId}")
-    public ResponseEntity<String> readCampaignByName(@PathVariable String insuredId) {
-        String result = xmlRepository.getProductsForInsuredId(insuredId);
+    public ResponseEntity<InsuredDataDetailsDTO> readCampaignByName(@PathVariable String insuredId) {
+        InsuredDataDetailsDTO result = xmlRepository.getProductsForInsuredId(insuredId);
         if (result != null) {
             return ResponseEntity.ok(result);
         }
